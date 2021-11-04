@@ -13,6 +13,11 @@ class Landing extends React.Component {
         this.setState({ display: !display });  // меняем state.display на противоположное значение
     };
 
+    getTitle = (restaurant) => {
+        const { title, url } = restaurant;
+        this.setState({ title: title, url: url, display: false });  // ES6 this.setState({ title, url, display: false });
+    };
+
     render() {
         return(
             <React.Fragment>
@@ -32,7 +37,10 @@ class Landing extends React.Component {
                         <ul>
                             {
                                 restaurants.map(restaurant => {
-                                    return <li key={restaurant.id}>{restaurant.title}</li>
+                                    return <li
+                                        onClick={ () => this.getTitle(restaurant) }
+                                        key={restaurant.id}
+                                    >{restaurant.title}</li>
                                 })
                             }
                         </ul>

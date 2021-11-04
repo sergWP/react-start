@@ -9,7 +9,8 @@ class Landing extends React.Component {
     };
 
     displayList = () => { // this родителя
-        console.log(this);
+        const { display } = this.state;     // const display = this.state.display
+        this.setState({ display: !display });  // меняем state.display на противоположное значение
     };
 
     render() {

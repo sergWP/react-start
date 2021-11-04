@@ -27,15 +27,16 @@ class Landing extends React.Component {
                         </div>
                     </div>
 
-                    <div className={'restaurant_select_bottom'}>
+                    {/* отображаем список если state.display == true*/}
+                    {this.state.display ? <div className={'restaurant_select_bottom'}>
                         <ul>
                             {
                                 restaurants.map(restaurant => {
-                                    return <li key={restaurant.index}>{restaurant.title}</li>
+                                    return <li key={restaurant.id}>{restaurant.title}</li>
                                 })
                             }
                         </ul>
-                    </div>
+                    </div> : null}
 
                     <button>Перейти в ресторан</button>
                 </div>

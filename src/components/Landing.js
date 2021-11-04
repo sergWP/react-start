@@ -18,6 +18,10 @@ class Landing extends React.Component {
         this.setState({ title: title, url: url, display: false });  // ES6 this.setState({ title, url, display: false });
     };
 
+    goToRestaurant = () => {
+        console.log('go to rest!');
+    };
+
     render() {
         return(
             <React.Fragment>
@@ -25,7 +29,9 @@ class Landing extends React.Component {
                     <div className={'restaurant_select_top'}>
                         <div
                             onClick={this.displayList}
-                            className={'restaurant_select_top-header font-effect-outline'}>Выбери ресторан</div>
+                            className={'restaurant_select_top-header font-effect-outline'}>
+                            { this.state.title ? this.state.title : 'Выбери ресторан' }
+                        </div>
                         <div className={'arrow_picker'}>
                             <div className={'arrow_picker-up'}></div>
                             <div className={'arrow_picker-down'}></div>
@@ -46,7 +52,12 @@ class Landing extends React.Component {
                         </ul>
                     </div> : null}
 
-                    <button>Перейти в ресторан</button>
+                    {
+                        this.state.title && !this.state.display ?
+                        (<button onClick={this.goToRestaurant}>Перейти в ресторан</button>)
+                        : null
+                    }
+
                 </div>
             </React.Fragment>
         );

@@ -1,6 +1,11 @@
 import React from 'react'
 
 class Burger extends React.Component {
+
+    handleClick = () => {
+        this.props.addToOrder(this.props.index);
+    }
+
     render() {
 
         /*
@@ -10,6 +15,7 @@ class Burger extends React.Component {
 
         // то же самое что и вверху, вариант с деструктурированием
         const { image, name, price, desc, status } = this.props.details;
+        const isAvailable = status === 'available';
 
         return (
             <li className={'menu-burger'}>
@@ -22,7 +28,13 @@ class Burger extends React.Component {
                         <span className={'price'}>{price} ₴</span>
                     </h3>
                     <p>{desc}</p>
-                    <button className={'button-order'}>Заказать</button>
+                    <button
+                        className={'button-order'}
+                        disabled={!isAvailable}
+                        onClick={this.handleClick}
+                    >
+                        {isAvailable ? 'Заказать' : 'Временно нет'}
+                    </button>
                 </div>
             </li>
         )

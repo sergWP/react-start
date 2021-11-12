@@ -27,6 +27,15 @@ class App extends React.Component {
         this.setState({burgers: burgers});           // ES6 - this.setState({burgers})
     }
 
+    addToOrder = (key) => {
+        // копия стейт
+        const order = {...this.state.order};
+        // добавить ключ к заказу со значением 1, либо обновить текущее значение
+        order[key] = order[key] + 1 || 1;
+        // записываем значение ордер в стейт
+        this.setState({order: order});              // ES6 - this.setState({order})
+    }
+
     render() {
         return (
             <div className={'burger-paradise'}>
@@ -48,6 +57,7 @@ class App extends React.Component {
                             return <Burger
                                 key={key}
                                 index={key}
+                                addToOrder = {this.addToOrder}
                                 details={this.state.burgers[key]}
                             />
                         })}

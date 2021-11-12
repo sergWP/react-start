@@ -14,7 +14,7 @@ class AddBurgerForm extends React.Component {
         //console.log('add burger', this.nameRef.current.value);
         const burger = {
             name: this.nameRef.current.value,
-            price: parseFloat(this.priceRef.current.value),
+            price: parseFloat(this.priceRef.current.value || 0), // если ниче не введено, указываем 0
             status: this.statusRef.current.value,
             desc: this.descRef.current.value,
             image: this.imageRef.current.value

@@ -9,13 +9,13 @@ class App extends React.Component {
     state = {
         burgers: {},
         order: {}
-    }
+    };
 
     loadSampleBurgers = () => {
         //this.state.burgers = sampleBurgers;  // нельзя менять состояние state напрямую
         this.setState({burgers: sampleBurgers});
         //console.log(this.state);
-    }
+    };
 
     addBurger = (burger) => {
         //console.log('addBurger', burger);
@@ -25,7 +25,7 @@ class App extends React.Component {
         burgers[`burger${Date.now()}`] = burger;
         // 3. записать обновленный burgers в объект state
         this.setState({burgers: burgers});           // ES6 - this.setState({burgers})
-    }
+    };
 
     addToOrder = (key) => {
         // копия стейт
@@ -34,7 +34,7 @@ class App extends React.Component {
         order[key] = order[key] + 1 || 1;
         // записываем значение ордер в стейт
         this.setState({order: order});              // ES6 - this.setState({order})
-    }
+    };
 
     render() {
         return (

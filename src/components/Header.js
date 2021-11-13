@@ -10,7 +10,7 @@ const Header = (props) => (
                     <div className={'header-rating_icon'}>★★★★★</div>
                 </div>
 
-                <div className={'header-divider'}></div>
+                <div className={'header-divider'}> </div>
                 <h1 className={'font-effect-fire-animation'}>{props.title}</h1>
                 <h3>
                         <span>
@@ -22,7 +22,7 @@ const Header = (props) => (
             </div>
         </div>
     </header>
-)
+);
 
 // class Header extends React.Component {
 //     render() {

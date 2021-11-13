@@ -18,13 +18,13 @@ class AddBurgerForm extends React.Component {
             status: this.statusRef.current.value,
             desc: this.descRef.current.value,
             image: this.imageRef.current.value
-        }
+        };
 
         //console.log(burger)
         this.props.addBurger(burger);
         // очищаем форму
         event.currentTarget.reset();
-    }
+    };
 
     render() {
         return (

@@ -4,7 +4,7 @@ class Burger extends React.Component {
 
     handleClick = () => {
         this.props.addToOrder(this.props.index);
-    }
+    };
 
     render() {
 

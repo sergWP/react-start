@@ -35,8 +35,8 @@ class Landing extends React.Component {
                             { this.state.title ? this.state.title : 'Выбери ресторан' }
                         </div>
                         <div className={'arrow_picker'}>
-                            <div className={'arrow_picker-up'}></div>
-                            <div className={'arrow_picker-down'}></div>
+                            <div className={'arrow_picker-up'}> </div>
+                            <div className={'arrow_picker-down'}> </div>
                         </div>
                     </div>
 

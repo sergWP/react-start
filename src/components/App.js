@@ -4,12 +4,27 @@ import Order from "./Order";
 import MenuAdmin from "./MenuAdmin";
 import sampleBurgers from "../sample-burgers";
 import Burger from './Burger';
+import base from "../base";
 
 class App extends React.Component {
     state = {
         burgers: {},
         order: {}
     };
+
+    // метод жизненного цикла
+    // https://ru.reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class
+    componentDidMount() {
+        const { params } = this.props.match;
+        this.ref = base.syncState(`${params.restaurantId}/burgers`, {
+            context: this,
+            state: "burgers"
+        })
+    }
+
+    componentWillUnmount() {
+        base.removeBinding(this.ref)
+    }
 
     loadSampleBurgers = () => {
         //this.state.burgers = sampleBurgers;  // нельзя менять состояние state напрямую
@@ -19,7 +34,7 @@ class App extends React.Component {
 
     addBurger = (burger) => {
         //console.log('addBurger', burger);
-        // 1. делаем копию state
+        // 1. делаем копию state (спред)
         const burgers = {...this.state.burgers};
         // 2. добавить новый бургер в объект burgers
         burgers[`burger${Date.now()}`] = burger;

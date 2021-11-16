@@ -11,6 +11,10 @@ class Order extends React.Component {
 
         // проверка, есди бургер недоступен - сообщение
         const isAvailable = burger && burger.status === 'available';
+
+        // лечим задержку от БД. Если бургеры не прогрузились - ничего не выводим
+        if (!burger) return null;
+
         if (!isAvailable) {
             return (
                 <li className={'unavailable'} key={key}>

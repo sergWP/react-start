@@ -16,10 +16,23 @@ class App extends React.Component {
     // https://ru.reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class
     componentDidMount() {
         const { params } = this.props.match;
+
+        //сохраняем заказ в localStorage
+        const localStorageRef = localStorage.getItem(params.restaurantId); // получаем заказ в стройчном режиме
+        if(localStorageRef) {
+            this.setState({order: JSON.parse(localStorageRef)}); // переводим из строки в объект
+            console.log(localStorageRef);
+        }
+
         this.ref = base.syncState(`${params.restaurantId}/burgers`, {
             context: this,
             state: "burgers"
         })
+    }
+
+    componentDidUpdate() {
+        const { params } = this.props.match;
+        localStorage.setItem(params.restaurantId, JSON.stringify(this.state.order));
     }
 
     componentWillUnmount() {
